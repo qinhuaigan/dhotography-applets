@@ -1,0 +1,93 @@
+<!--pages/mine/index.wxml-->
+<view class="pageHead">
+  <view class="avatar">
+    <wux-icon type="ios-person"></wux-icon>
+  </view>
+  <view class="userName">请点击登录</view>
+</view>
+<view class="content">
+  <view class="box">
+    <view class="boxTitle clearfix">
+      <view class="fl">所有订单</view>
+      <view class="fr">
+        <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+      </view>
+    </view>
+    <view class="flexBox">
+      <view class="flexItem">
+        <wux-icon type="ios-clock" size="26" color="rgb(245, 180, 62)"></wux-icon>
+        <view>进行中</view>
+      </view>
+      <view class="flexItem">
+        <wux-icon type="ios-checkmark-circle" size="26" color="rgb(245, 180, 62)"></wux-icon>
+        <view>已完成</view>
+      </view>
+      <view class="flexItem">
+        <wux-icon type="ios-archive" size="26" color="rgb(245, 180, 62)"></wux-icon>
+        <view>已取消</view>
+      </view>
+    </view>
+  </view>
+  <view class="mt10px">
+    <view class="box">
+      <view class="menuList">
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl">最新消息</view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl">我的订阅</view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl">我的表单</view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mt10px">
+    <view class="box">
+      <view class="menuList">
+        <view class="menuItem clearfix">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-pin"></wux-icon>
+            <text class="ml5px">广东市海珠区</text>
+          </view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-call"></wux-icon>
+            <text class="ml5px">1300000000</text>
+          </view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-alarm"></wux-icon>
+            <text class="ml5px">周一至周五09:00-18:00</text>
+          </view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-home"></wux-icon>
+            <text class="ml5px">这是摄影婚庆行业的预约模板</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部导航栏 -->
+<tabBar></tabBar>

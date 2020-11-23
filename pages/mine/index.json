@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabBar": "../../components/custom/custom-tab-bar/index",
+    "wux-icon": "../../components/wux-weapp/icon/index"
+  }
+}

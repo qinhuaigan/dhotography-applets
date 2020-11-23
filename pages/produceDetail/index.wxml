@@ -1,0 +1,36 @@
+<!--pages/produceDetail/index.wxml-->
+<view class="mt20px">
+  <view class="themeCar" wx:if="{{themeDetail}}">
+    <image mode="widthFix" src="{{baseURL}}{{themeDetail.path}}"></image>
+    <view class="carTitle">{{themeDetail.title}}</view>
+    <view class="carDescription">{{themeDetail.description}}</view>
+    <view class="carFooter clearfix">
+      <view class="carMoney fl">{{themeDetail.totalMoney}}</view>
+      <view class="carFooterDes fl">已预约：{{themeDetail.num || 0}} 剩余：{{themeDetail.total - (themeDetail.num || 0)}}
+      </view>
+    </view>
+  </view>
+  <view class="mt20px">
+    <view class="themeCar">
+      <view class="detailTitle">
+        <view class="detailTitleText">服务详情</view>
+        <view class="detailTitleLine"></view>
+        <view class="textarea">{{themeDetail.detail}}</view>
+        <view class="empty" wx:if="{{!themeDetail.detail}}">
+          <wux-icon type=""></wux-icon>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottomMenu clearfix">
+    <view class="bottomMenuLeft">
+      <view class="leftBtn" bindtap="call">
+        <wux-icon type="ios-call" size="26"></wux-icon>
+        <view>电话</view>
+      </view>
+    </view>
+    <navigator url="../newOrder/index">
+      <view class="bottomMenuRightBtn">立即预约</view>
+    </navigator>
+  </view>
+</view>

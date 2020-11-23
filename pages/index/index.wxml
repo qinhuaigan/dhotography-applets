@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<view>
+  <view class="carouselBox">
+    <swiper class="carouselSwiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+      duration="{{duration}}">
+      <block wx:for="{{carouselList}}" wx:key="path">
+        <swiper-item>
+          <view class="carouselImg" style="background-image: url('{{baseURL}}{{item.path}}')"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="contentBox">
+    <view class="boxTitle">
+      <view class="titleImg"></view>
+      <view class="titleText">用心只为您的幸福</view>
+    </view>
+    <view class="tabList">
+      <view class="tabItem" wx:for="{{tabsData}}" wx:key="value">
+        <navigator open-type="reLaunch" url="../produce/index?series={{item.value}}">
+          <wux-icon type="{{ item.icon }}" />
+          <view class="tabText">{{item.label}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="contentBox">
+    <view class="boxTitle">
+      <wux-divider>
+        <view class="boxTitleText">本期推荐</view>
+      </wux-divider>
+    </view>
+    <view class="dividerWrap">
+      <wux-divider show-text="{{ false }}" />
+    </view>
+    <view>
+      <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+        <view class="themeList clearfix" style="width: {{themeData.length * 320}}rpx">
+          <view class="themeCar" wx:for="{{themeData}}" wx:key="path" data-theme="{{item}}" bindtap="gotoDetailPage">
+            <view class="carImg" style="background-image: url('{{baseURL}}{{item.path}}')"></view>
+            <view class="overHide mt5px">{{item.title}}</view>
+            <view class="mt5px">￥{{item.price}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="contentBox">
+    <image class="mt10px" mode="widthFix" wx:for="{{scienceImgs}}" src="{{baseURL}}{{item.path}}" wx:key="path"></image>
+    <view class="mt10px mb10px">环境展示</view>
+  </view>
+  <!-- 底部导航栏 -->
+  <tabBar></tabBar>
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+</view>
