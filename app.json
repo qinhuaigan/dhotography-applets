@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
     "pages/produce/index",
@@ -10,7 +11,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "微星摄影服务平台",
+    "navigationBarTitleText": "星缘摄影工作室",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

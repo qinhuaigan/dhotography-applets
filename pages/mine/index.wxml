@@ -3,7 +3,9 @@
   <view class="avatar">
     <wux-icon type="ios-person"></wux-icon>
   </view>
-  <view class="userName">请点击登录</view>
+  <navigator open-type="reLaunch" url="../login/login">
+    <view class="userName">请点击登录</view>
+  </navigator>
 </view>
 <view class="content">
   <view class="box">

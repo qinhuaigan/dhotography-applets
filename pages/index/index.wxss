@@ -48,26 +48,36 @@ page {
   font-size: 36rpx;
 }
 
-.titleImg {
-  height: 120rpx;
-  /* background-color: #aaa; */
-  background-image: url('http://localhost:3000/api/Containers/5faa37c559db3019b049e630/download/AFEImLMaEAIYACC6nc7jBSjAvO23AzDuBTjoAkBl.jpg');
-  background-size: cover;
-}
-
 .titleText {
   margin-top: 20rpx;
+}
+
+.titleImg {
+  display: inline-block;
+  width: 120rpx;
+  height: 60rpx;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 
 .tabList {
   display: flex;
-  margin-top: 60rpx;
+  margin-top: 40rpx;
   text-align: center;
 }
 
 .tabList .tabItem {
   flex: 1;
+  margin: 0 5px;
+}
+
+.tabList .tabItem .typeImg {
+  width: 100%;
+  padding-top: 100%;
+  background-size: contain;
+  background-position: center;
 }
 
 .tabList .tabItem .tabText {

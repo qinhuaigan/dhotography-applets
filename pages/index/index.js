@@ -17,21 +17,21 @@ Page({
     interval: 2000,
     duration: 500,
     tabsData: [{
-      label: '全系列',
-      value: null,
-      icon: 'ios-aperture'
-    }, {
-      label: '礼服',
+      label: '街拍',
       value: 1,
-      icon: 'ios-shirt'
+      path: '../../assets/imgs/01.png'
     }, {
-      label: '妆容',
+      label: '写真',
       value: 2,
-      icon: 'ios-color-palette'
+      path: '../../assets/imgs/02.png'
     }, {
-      label: '摄影',
+      label: '棚拍',
       value: 3,
-      icon: 'ios-camera'
+      path: '../../assets/imgs/03.png'
+    }, {
+      label: '婚庆',
+      value: 4,
+      path: '../../assets/imgs/04.png'
     }]
   },
   //事件处理函数
@@ -92,6 +92,24 @@ Page({
     //     }
     //   })
     // }
+  },
+  upload() { // 上传文件
+    wx.chooseImage({
+      count: 10,
+      success: (res) => {
+        wx.uploadFile({
+          filePath: res.tempFilePaths[0],
+          name: 'file',
+          url: 'http://192.168.2.214/v1/trade/file/upload',
+          success: (response) => {
+            console.log('文件上传结果', response)
+          },
+          fail: (err) => {
+            console.log('上传失败', err)
+          }
+        })
+      }
+    })
   },
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo

@@ -1,4 +1,7 @@
 //app.js
+import {
+  $wuxToptips
+} from './components/wux-weapp/index'
 App({
   onLaunch: async function () {
     // 展示本地存储能力
@@ -40,7 +43,7 @@ App({
     firstLoad: true,
     themeDetail: null
   },
-  showLoading () {
+  showLoading() {
     wx.showToast({
       title: '请稍后...',
       icon: 'loading',
@@ -48,7 +51,7 @@ App({
       mask: true
     })
   },
-  hideLoading () {
+  hideLoading() {
     wx.hideToast()
   },
   formatDate(value, type) {
@@ -80,5 +83,36 @@ App({
       })
     }
     return fmt
+  },
+  postData(url, data) { // post 请求后台数据
+    return new Promise((resolve) => {
+      wx.showLoading({
+        title: '请稍后...',
+        mask: true
+      })
+      wx.request({
+        method: 'post',
+        url: `${this.globalData.baseURL}${url}?access_token=${this.globalData.token}`,
+        data,
+        success: (response) => {
+          wx.hideLoading()
+          if (response.data.code === 0) {
+            resolve(response.data.data)
+          } else {
+            $wuxToptips().error({
+              hidden: false,
+              text: response.data.msg,
+              duration: 3000,
+              success() {},
+            })
+            resolve(false)
+          }
+        },
+        fail: (err) => {
+          wx.hideLoading()
+          resolve(false)
+        }
+      })
+    })
   }
 })
