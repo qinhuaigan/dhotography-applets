@@ -5,6 +5,7 @@
 page {
   color: rgb(53, 53, 53);
   padding-bottom: 140rpx;
+  background-color: #f4f4f4;
 }
 
 
@@ -312,6 +313,10 @@ image {
   color: #67C23A;
 }
 
+.invalidColor {
+  color: #738380;
+}
+
 .failColor {
   color: #F56C6C;
 }
@@ -351,11 +356,6 @@ image {
   padding: 10rpx 40rpx;
   display: inline-block;
   color: #fff;
-}
-
-.descriptionText {
-  line-height: 50rpx;
-  padding: 40rpx 0;
 }
 
 .footerText {
@@ -444,4 +444,8 @@ image {
   display: inline-block;
   vertical-align: middle;
   line-height: initial;
+}
+
+.contain {
+  padding: 0 30rpx;
 }

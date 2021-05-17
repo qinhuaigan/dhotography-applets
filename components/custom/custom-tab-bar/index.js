@@ -1,5 +1,6 @@
 // custom-tab-bar/index.js
 const app = getApp()
+import tabsMap from '../../../json/tabs.js'
 Component({
   /**
    * 组件的属性列表
@@ -12,7 +13,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    defaultCurrentPath: null,
     tabs: [{
       text: '首页',
       icon: 'ios-home',
@@ -25,7 +25,8 @@ Component({
       text: '我的',
       icon: 'ios-person',
       path: '/pages/mine/index'
-    }]
+    }],
+    active: 0
   },
 
   /**
@@ -38,16 +39,9 @@ Component({
       if (`/${pagePath}` === url) {
         return
       }
-      wx.setStorage({
-        data: url,
-        key: 'defaultCurrentPath',
-        success: function () {
-          wx.reLaunch({
-            url
-          })
-        }
+      wx.reLaunch({
+        url
       })
-
     },
     getCurrentPage() {
       let pages = getCurrentPages();
@@ -59,29 +53,13 @@ Component({
     }
   },
   attached() {
-    const that = this
-    wx.getStorage({
-      key: 'defaultCurrentPath',
-      success: function (res) {
-        if (app.globalData.firstLoad) {
-          app.globalData.firstLoad = false
-          that.data.defaultCurrentPath = '/pages/index/index'
-          that.setData({
-            defaultCurrentPath: that.data.defaultCurrentPath
-          })
-        } else {
-          that.data.defaultCurrentPath = res.data
-          that.setData({
-            defaultCurrentPath: res.data
-          })
-        }
-      },
-      fail: function (err) {
-        that.data.defaultCurrentPath = that.data.tabs[0].path
-        that.setData({
-          defaultCurrentPath: that.data.defaultCurrentPath
+    const currPage = this.getCurrentPage()
+    for (const key in tabsMap) {
+      if (tabsMap[key].includes(currPage.route)) {
+        this.setData({
+          active: key
         })
       }
-    })
+    }
   }
 })

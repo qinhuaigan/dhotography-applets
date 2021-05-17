@@ -1,0 +1,156 @@
+// pages/order/index.js
+import {
+  $wuxDialog,
+  $wuxToptips
+} from '../../components/wux-weapp/index'
+const app = getApp()
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    tabs: [{
+      label: '全部',
+      value: null
+    }, {
+      label: '预约中',
+      value: 0
+    }, {
+      label: '进行中',
+      value: 1
+    }, {
+      label: '已完成',
+      value: 2
+    }, {
+      label: '已取消',
+      value: -1
+    }],
+    orderList: [],
+    searchStatus: null,
+    statusMap: {
+      '-1': '已取消',
+      '0': '预约中',
+      '1': '进行中',
+      '2': '已完成'
+    },
+    statusColorMap: {
+      '-1': 'invalidColor',
+      '0': 'warnColor',
+      '1': 'warnColor',
+      '2': 'successColor'
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.getMyOrders()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  tabChange(e) { // 切换tab
+    const {
+      key
+    } = e.detail
+    this.data.searchStatus = key ? parseFloat(key) : ''
+    this.getMyOrders()
+  },
+  async getMyOrders() { // 获取 "订单列表"
+    const data = {
+      status: this.data.searchStatus
+    }
+    const result = await app.postData('/Orders/getOrdersByToken', data)
+    if (result) {
+      const orderList = result.data.reduce((total, item) => {
+        item.themeInfo.files.forEach((file) => {
+          file.path = `${app.globalData.baseURL}${file.path}`
+        })
+        total.push(item)
+        return total
+      }, [])
+      this.setData({
+        orderList: orderList
+      })
+    }
+  },
+  async cancelOrder(e) { // 取消订单
+    console.log('e ===', e)
+    const {
+      id
+    } = e.target.dataset
+    $wuxDialog().prompt({
+      resetOnClose: true,
+      title: '提示',
+      content: '请输入备注说明',
+      defaultText: '',
+      placeholder: '请输入说明',
+      maxlength: -1,
+      onConfirm: (e, response) => {
+        const content = response
+        app.postData('/Orders/updateOrder', {
+          id,
+          status: -1,
+          customerRemarks: content
+        }).then((result) => {
+          if (result) {
+            $wuxToptips().success({
+              hidden: false,
+              text: '订单取消成功',
+              duration: 3000,
+              success() {},
+            })
+          }
+        })
+      },
+    })
+  }
+})

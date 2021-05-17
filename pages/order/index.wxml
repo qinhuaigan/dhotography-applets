@@ -1,0 +1,40 @@
+<!--pages/order/index.wxml-->
+<view class="tabWarp">
+  <wux-tabs bindchange="tabChange">
+    <wux-tab key="{{item.value}}" title="{{item.label}}" wx:for="{{tabs}}" wx:key="value"></wux-tab>
+  </wux-tabs>
+</view>
+<view class="orderList">
+  <view class="contain orderItem" wx:for="{{orderList}}" wx:key="id">
+    <view class="orderTitle">
+      <wux-row>
+        <wux-col span="8">订单号：{{item.themeNo}}</wux-col>
+        <wux-col span="4">
+          <view class="text-right {{statusColorMap[item.status]}}">{{statusMap[item.status]}}</view>
+        </wux-col>
+      </wux-row>
+    </view>
+    <view class="orderContent">
+      <wux-row gutter="10">
+        <wux-col span="3">
+          <view class="imgBox"
+            style="background-image: url({{item.themeInfo.files[0] ? item.themeInfo.files[0].path : ''}})"></view>
+        </wux-col>
+        <wux-col span="9">
+          <view class="overHide fz16px">{{item.themeInfo.title}}</view>
+          <view class="descriptionText">{{item.themeInfo.description}}</view>
+          <view class="warnColor fz14px">￥{{item.themeInfo.price}}</view>
+        </wux-col>
+      </wux-row>
+    </view>
+    <view wx:if="{{item.status == 0}}" class="btnBox text-right">
+      <view class="cancelBtn" data-id="{{item.id}}" bindtap="cancelOrder">取消预约</view>
+    </view>
+  </view>
+</view>
+<!-- 弹框组件 -->
+<wux-dialog id="wux-dialog" />
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
+<!-- 底部导航栏 -->
+<!-- <tabBar></tabBar> -->

@@ -3,9 +3,10 @@
   <view class="avatar">
     <wux-icon type="ios-person"></wux-icon>
   </view>
-  <navigator open-type="reLaunch" url="../login/login">
+  <navigator wx:if="{{!userInfo}}" open-type="reLaunch" url="../login/login">
     <view class="userName">请点击登录</view>
   </navigator>
+  <view wx:if="{{userInfo}}" class="userName">{{userInfo.chineseName}}</view>
 </view>
 <view class="content">
   <view class="box">
@@ -17,16 +18,28 @@
     </view>
     <view class="flexBox">
       <view class="flexItem">
-        <wux-icon type="ios-clock" size="26" color="rgb(245, 180, 62)"></wux-icon>
-        <view>进行中</view>
+        <navigator url="../order/index?status=0">
+          <wux-icon type="ios-alarm" size="26" color="rgb(245, 180, 62)"></wux-icon>
+          <view>预约中</view>
+        </navigator>
       </view>
       <view class="flexItem">
-        <wux-icon type="ios-checkmark-circle" size="26" color="rgb(245, 180, 62)"></wux-icon>
-        <view>已完成</view>
+        <navigator url="../order/index?status=1">
+          <wux-icon type="ios-clock" size="26" color="rgb(245, 180, 62)"></wux-icon>
+          <view>进行中</view>
+        </navigator>
       </view>
       <view class="flexItem">
-        <wux-icon type="ios-archive" size="26" color="rgb(245, 180, 62)"></wux-icon>
-        <view>已取消</view>
+        <navigator url="../order/index?status=2">
+          <wux-icon type="ios-checkmark-circle" size="26" color="rgb(245, 180, 62)"></wux-icon>
+          <view>已完成</view>
+        </navigator>
+      </view>
+      <view class="flexItem">
+        <navigator url="../order/index?status=-1">
+          <wux-icon type="ios-archive" size="26" color="rgb(245, 180, 62)"></wux-icon>
+          <view>已取消</view>
+        </navigator>
       </view>
     </view>
   </view>
@@ -89,6 +102,9 @@
         </view>
       </view>
     </view>
+  </view>
+  <view class="mt20px">
+    <wux-button block type="assertive" bindtap="loginOut">退出登陆</wux-button>
   </view>
 </view>
 <!-- 底部导航栏 -->
