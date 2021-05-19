@@ -314,7 +314,7 @@ image {
 }
 
 .invalidColor {
-  color: #738380;
+  color: #ccc;
 }
 
 .failColor {

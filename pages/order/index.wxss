@@ -52,3 +52,21 @@
   display: inline-block;
   border-radius: 10rpx;
 }
+
+.empty {
+  padding: 100rpx;
+  /* background-color: #fff; */
+  margin-top: 400rpx;
+  text-align: center;
+  color: #ccc;
+  display: inline-block;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  margin-left: 50%;
+  margin-top: 50%;
+}
+
+.empty .emptyText {
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}

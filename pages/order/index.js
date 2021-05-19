@@ -29,17 +29,24 @@ Page({
     orderList: [],
     searchStatus: null,
     statusMap: {
-      '-1': '已取消',
+      '-2': '己取消', // 客户自己取消订单
+      '-1': '已取消', // 管理员取消订单
       '0': '预约中',
       '1': '进行中',
       '2': '已完成'
     },
     statusColorMap: {
+      '-2': 'invalidColor',
       '-1': 'invalidColor',
       '0': 'warnColor',
       '1': 'warnColor',
       '2': 'successColor'
-    }
+    },
+    currentPage: 1,
+    pageSize: 5,
+    total: 0,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
 
   /**
@@ -88,7 +95,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.nextPage()
   },
 
   /**
@@ -102,11 +109,22 @@ Page({
       key
     } = e.detail
     this.data.searchStatus = key ? parseFloat(key) : ''
+    this.data.currentPage = 1
+    this.data.orderList = []
     this.getMyOrders()
+    this.tabClick(e)
+  },
+  nextPage() { // 加载 "下一页"
+    if (this.data.currentPage < this.data.total) {
+      this.data.currentPage += 1
+      this.getMyOrders()
+    }
   },
   async getMyOrders() { // 获取 "订单列表"
     const data = {
-      status: this.data.searchStatus
+      status: this.data.searchStatus,
+      currentPage: this.data.currentPage,
+      pageSize: this.data.pageSize
     }
     const result = await app.postData('/Orders/getOrdersByToken', data)
     if (result) {
@@ -118,12 +136,13 @@ Page({
         return total
       }, [])
       this.setData({
-        orderList: orderList
+        orderList: [...this.data.orderList, ...orderList],
+        total: Math.ceil(result.count / this.data.pageSize),
+        currentPage: this.data.currentPage
       })
     }
   },
   async cancelOrder(e) { // 取消订单
-    console.log('e ===', e)
     const {
       id
     } = e.target.dataset
@@ -138,8 +157,8 @@ Page({
         const content = response
         app.postData('/Orders/updateOrder', {
           id,
-          status: -1,
-          customerRemarks: content
+          status: -2,
+          customerCancelRemarks: content
         }).then((result) => {
           if (result) {
             $wuxToptips().success({
@@ -148,9 +167,26 @@ Page({
               duration: 3000,
               success() {},
             })
+            for (let i = 0; i < this.data.orderList.length; i++) {
+              if (this.data.orderList[i].id === id) {
+                this.data.orderList[i].status = -2
+                break
+              }
+            }
+            this.setData({
+              orderList: this.data.orderList
+            })
           }
         })
       },
+    })
+  },
+  gotoDetail(e) { // 查看订单详情
+    const {
+      id
+    } = e.target.dataset
+    wx.navigateTo({
+      url: `../orderDetail/index?id=${id}`,
     })
   }
 })

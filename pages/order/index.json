@@ -8,7 +8,8 @@
     "wux-row": "../../components/wux-weapp/row/index",
     "wux-col": "../../components/wux-weapp/col/index",
     "wux-dialog": "../../components/wux-weapp/dialog/index",
-    "wux-toptips": "../../components/wux-weapp/toptips/index"
+    "wux-toptips": "../../components/wux-weapp/toptips/index",
+    "wux-divider": "../../components/wux-weapp/divider/index"
   },
   "navigationBarTitleText": "我的订单"
 }

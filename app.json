@@ -7,7 +7,8 @@
     "pages/mine/index",
     "pages/produceDetail/index",
     "pages/newOrder/index",
-    "pages/order/index"
+    "pages/order/index",
+    "pages/orderDetail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

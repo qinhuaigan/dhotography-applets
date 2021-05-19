@@ -206,14 +206,14 @@ Page({
       return
     }
 
-    const token = await app.postData('/UserInformations/login', {
+    const result = await app.postData('/UserInformations/login', {
       username: this.data.username,
       password: this.data.password
     })
-    if (token) {
-      app.globalData.token = token
+    if (result) {
+      app.globalData.token = result.data
       wx.setStorage({
-        data: token,
+        data: result.data,
         key: 'token'
       })
       this.getLoginUserInfo()

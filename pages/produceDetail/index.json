@@ -3,5 +3,5 @@
     "wux-icon": "../../components/wux-weapp/icon/index",
     "wux-prompt": "../../components/wux-weapp/prompt/index"
   },
-  "navigationBarTitleText": "订单详情"
+  "navigationBarTitleText": "服务详情"
 }
