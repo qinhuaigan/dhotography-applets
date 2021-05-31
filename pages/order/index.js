@@ -46,13 +46,19 @@ Page({
     pageSize: 5,
     total: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    defaultCurrent: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const status = options.status ? parseFloat(options.status) : null
+    this.setData({
+      searchStatus: status,
+      defaultCurrent: status
+    })
     this.getMyOrders()
   },
 
@@ -112,7 +118,6 @@ Page({
     this.data.currentPage = 1
     this.data.orderList = []
     this.getMyOrders()
-    this.tabClick(e)
   },
   nextPage() { // 加载 "下一页"
     if (this.data.currentPage < this.data.total) {
@@ -184,7 +189,7 @@ Page({
   gotoDetail(e) { // 查看订单详情
     const {
       id
-    } = e.target.dataset
+    } = e.currentTarget.dataset
     wx.navigateTo({
       url: `../orderDetail/index?id=${id}`,
     })

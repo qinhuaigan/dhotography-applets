@@ -6,16 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null
+    userInfo: null,
+    orderCount: {
+      isCancel: 0, // 已取消
+      isAppointment: 0, // 预约中
+      isHand: 0, // 进行中
+      isCompleted: 0 // 已完成
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.userInfo)
     this.setData({
       userInfo: app.globalData.userInfo
     })
+    this.getOrderCount()
   },
 
   /**
@@ -75,5 +83,13 @@ Page({
     wx.reLaunch({
       url: '../login/login',
     })
+  },
+  async getOrderCount() { // 获取订单 "统计数据"
+    const result = await app.postData('/Orders/userOrderCount')
+    if (result) {
+      this.setData({
+        orderCount: result.data
+      })
+    }
   }
 })

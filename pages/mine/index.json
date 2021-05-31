@@ -2,7 +2,8 @@
   "usingComponents": {
     "tabBar": "../../components/custom/custom-tab-bar/index",
     "wux-icon": "../../components/wux-weapp/icon/index",
-    "wux-button": "../../components/wux-weapp/button/index"
+    "wux-button": "../../components/wux-weapp/button/index",
+    "wux-badge": "../../components/wux-weapp/badge/index"
   },
   "navigationBarTitleText": "我的"
 }

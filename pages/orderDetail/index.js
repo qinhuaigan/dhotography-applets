@@ -1,18 +1,33 @@
 // pages/orderDetail/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderInfo: null,
+    statusMap: {
+      '-2': '己取消', // 客户自己取消订单
+      '-1': '已取消', // 管理员取消订单
+      '0': '预约中',
+      '1': '进行中',
+      '2': '已完成'
+    },
+    statusColorMap: {
+      '-2': 'invalidColor',
+      '-1': 'invalidColor',
+      '0': 'warnColor',
+      '1': 'warnColor',
+      '2': 'successColor'
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getOrderInfo(options.id)
   },
 
   /**
@@ -62,5 +77,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  async getOrderInfo(id) { // 获取订单详情
+    const result = await app.postData('/Orders/getOrderDetail', { id })
+    if (result) {
+      result.data.themeInfo.files.forEach((item) => {
+        item.path = `${app.globalData.baseURL}${item.path}`
+      })
+      this.setData({
+        orderInfo: result.data
+      })
+    }
+  },
+  call() { // 联系我们（打电话）
+    wx.makePhoneCall({
+      phoneNumber: this.data.orderInfo.themeInfo.phone,
+    })
   }
 })

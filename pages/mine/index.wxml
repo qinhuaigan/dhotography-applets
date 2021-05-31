@@ -10,24 +10,31 @@
 </view>
 <view class="content">
   <view class="box">
-    <view class="boxTitle clearfix">
-      <view class="fl">所有订单</view>
-      <view class="fr">
-        <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+    <navigator url="../order/index?status=null">
+      <view class="boxTitle clearfix">
+        <view class="fl">所有订单</view>
+        <view class="fr">
+          <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+        </view>
       </view>
-    </view>
+    </navigator>
     <view class="flexBox">
       <view class="flexItem">
-        <navigator url="../order/index?status=0">
-          <wux-icon type="ios-alarm" size="26" color="rgb(245, 180, 62)"></wux-icon>
-          <view>预约中</view>
-        </navigator>
+        <wux-badge count="{{orderCount.isAppointment}}">
+          <navigator url="../order/index?status=0">
+            <wux-icon type="ios-alarm" size="26" color="rgb(245, 180, 62)"></wux-icon>
+            <view>预约中</view>
+          </navigator>
+        </wux-badge>
+
       </view>
       <view class="flexItem">
-        <navigator url="../order/index?status=1">
-          <wux-icon type="ios-clock" size="26" color="rgb(245, 180, 62)"></wux-icon>
-          <view>进行中</view>
-        </navigator>
+        <wux-badge count="{{orderCount.isHand}}">
+          <navigator url="../order/index?status=1">
+            <wux-icon type="ios-clock" size="26" color="rgb(245, 180, 62)"></wux-icon>
+            <view>进行中</view>
+          </navigator>
+        </wux-badge>
       </view>
       <view class="flexItem">
         <navigator url="../order/index?status=2">

@@ -100,7 +100,7 @@ Page({
       appointmentTime: this.data.appointmentTime
     })
   },
-  submit() {
+  async submit() {
     const data = {
       token: app.globalData.token,
       themeId: this.data.themeDetail.id,
@@ -110,32 +110,17 @@ Page({
       phone: this.data.phone,
       customerRemarks: this.data.customerRemarks
     }
-    app.showLoading()
-    wx.request({
-      url: `${app.globalData.baseURL}/orders/addOrder?access_token=${app.globalData.token}`,
-      method: 'post',
-      data,
-      success(response) {
-        if (response.data.code === 0) {
-          $wuxToptips().success({
-            hidden: false,
-            text: '提交成功',
-            duration: 3000,
-            success() {}
-          })
-        } else {
-          $wuxToptips().error({
-            hidden: false,
-            text: response.data.msg,
-            duration: 3000,
-            success() {},
-          })
-        }
-        app.hideLoading()
-      },
-      fail() {
-        app.hideLoading()
-      }
-    })
+    const result = await app.postData('/orders/addOrder', data)
+    if (result) {
+      $wuxToptips().success({
+        hidden: false,
+        text: '提交成功',
+        duration: 3000,
+        success() {}
+      })
+      wx.navigateBack({
+        delta: -1,
+      })
+    }
   }
 })

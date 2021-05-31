@@ -29,7 +29,7 @@
       <wux-input label="*姓名" data-str="customerName" controlled="{{true}}" value="{{customerName}}" bind:blur="updateStr" placeholder="请输入姓名" />
     </wux-cell>
     <wux-cell hover-class="none">
-      <wux-textarea label="买家留言" bind:blur="updateStr" data-str="customerRemarks" maxlength="500" placeholder="留言.."
+      <wux-textarea label="买家留言" bind:change="updateStr" data-str="customerRemarks" maxlength="500" placeholder="留言.."
         rows="8" hasCount="{{true}}" />
     </wux-cell>
   </view>
