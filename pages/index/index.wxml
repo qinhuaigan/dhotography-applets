@@ -38,7 +38,7 @@
       <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
         <view class="themeList clearfix" style="width: {{themeData.length * 320}}rpx">
           <view class="themeCar" wx:for="{{themeData}}" wx:key="path" data-theme="{{item}}" bindtap="gotoDetailPage">
-            <view class="carImg" style="background-image: url('{{baseURL}}{{item.path}}')"></view>
+            <view class="carImg" style="background-image: url('{{baseURL}}{{item.files[0] ? item.files[0].path : ''}}')"></view>
             <view class="overHide mt5px">{{item.title}}</view>
             <view class="mt5px">￥{{item.price}}</view>
           </view>

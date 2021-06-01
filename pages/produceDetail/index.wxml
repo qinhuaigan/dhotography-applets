@@ -1,7 +1,14 @@
 <!--pages/produceDetail/index.wxml-->
 <view class="mt20px">
   <view class="themeCar" wx:if="{{themeDetail}}">
-    <image mode="widthFix" src="{{baseURL}}{{themeDetail.path}}"></image>
+    <swiper class="carouselSwiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000"
+      duration="500">
+      <block wx:for="{{themeDetail.files}}" wx:key="path">
+        <swiper-item>
+          <view class="carouselImg" style="background-image: url('{{baseURL}}{{item.path}}')"></view>
+        </swiper-item>
+      </block>
+    </swiper>
     <view class="carTitle">{{themeDetail.title}}</view>
     <view class="carDescription">{{themeDetail.description}}</view>
     <view class="carFooter clearfix">
@@ -15,7 +22,7 @@
       <view class="detailTitle">
         <view class="detailTitleText">服务详情</view>
         <view class="detailTitleLine"></view>
-        <view class="textarea">{{themeDetail.detail}}</view>
+        <view class="textarea">{{themeDetail.detail || ''}}</view>
         <view class="empty" wx:if="{{!themeDetail.detail}}">
           <wux-icon type=""></wux-icon>
         </view>

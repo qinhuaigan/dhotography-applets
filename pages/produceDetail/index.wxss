@@ -122,3 +122,10 @@ page {
   margin-top: 10rpx;
   font-size: 34rpx;
 }
+
+.carouselImg {
+  height: 180px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
