@@ -9,7 +9,8 @@
     "pages/newOrder/index",
     "pages/order/index",
     "pages/orderDetail/index",
-    "pages/message/index"
+    "pages/message/index",
+    "pages/subscribeMsg/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

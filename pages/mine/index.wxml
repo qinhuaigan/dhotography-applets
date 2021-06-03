@@ -63,12 +63,16 @@
             </view>
           </view>
         </navigator>
-        <view class="menuItem borderBottom clearfix">
-          <view class="fl">我的订阅</view>
-          <view class="fr">
-            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+        <navigator url="../subscribeMsg/index">
+          <view class="menuItem borderBottom clearfix">
+            <wux-badge count="{{subscribeMsgNum}}">
+              <view class="fl mr10px">我的订阅</view>
+            </wux-badge>
+            <view class="fr">
+              <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+            </view>
           </view>
-        </view>
+        </navigator>
         <view class="menuItem clearfix">
           <view class="fl">我的表单</view>
           <view class="fr">

@@ -11,9 +11,10 @@ Page({
       isCancel: 0, // 已取消
       isAppointment: 0, // 预约中
       isHand: 0, // 进行中
-      isCompleted: 0, // 已完成
-      unreadMsgNum: 0 // 未读消息数量
-    }
+      isCompleted: 0 // 已完成
+    },
+    subscribeMsgNum: 0, // "我的订阅" 未读数量 
+    unreadMsgNum: 0 // "我的订阅" 未读消息数量
   },
 
   /**
@@ -23,8 +24,6 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
-    this.getOrderCount()
-    this.getUnreadMsgNum()
   },
 
   /**
@@ -45,7 +44,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.getOrderCount()
+    this.getUnreadMsgNum()
+    this.getSubscribeMsgNum()
   },
 
   /**
@@ -98,6 +99,14 @@ Page({
     if (result) {
       this.setData({
         unreadMsgNum: result.data.total
+      })
+    }
+  },
+  async getSubscribeMsgNum() { // 获取 "我的订阅--未读消息" 数量
+    const result = await app.postData('/Messages/getUnreadMsgNum', { msgType: 1 })
+    if (result) {
+      this.setData({
+        subscribeMsgNum: result.data.total
       })
     }
   }
