@@ -24,13 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.themeDetail = app.globalData.themeDetail
-    this.data.themeDetail.priceShow = this.data.themeDetail.price.toFixed(2)
-    this.setData({
-      themeDetail: app.globalData.themeDetail,
-      customerName: app.globalData.userInfo.chineseName,
-      phone: app.globalData.userInfo.username
-    })
+    this.getThemeDetail(options.id)
   },
 
   /**
@@ -120,6 +114,21 @@ Page({
       })
       wx.navigateBack({
         delta: -1,
+      })
+    }
+  },
+  async getThemeDetail(id) {
+    const result = await app.postData('/Themes/getThemeDetail', { id })
+    if (result) {
+      this.data.themeDetail = result.data
+      this.data.themeDetail.priceShow = this.data.themeDetail.price.toFixed(2)
+      this.setData({
+        themeDetail: this.data.themeDetail,
+        customerName: app.globalData.userInfo.chineseName,
+        phone: app.globalData.userInfo.username
+      })
+      this.setData({
+        themeDetail: result.data
       })
     }
   }

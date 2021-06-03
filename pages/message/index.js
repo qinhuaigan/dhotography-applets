@@ -10,14 +10,18 @@ Page({
     currentPage: 1,
     pageSize: 5,
     total: 0,
-    messageList: []
+    messageList: [],
+    typePageMap: {
+      1: '../orderDetail/index',
+      2: '../produceDetail/index'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMessageList()
+    
   },
 
   /**
@@ -31,7 +35,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.data.currentPage = 1
+    this.data.messageList = []
+    this.getMessageList()
   },
 
   /**
@@ -59,7 +65,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.nextPage()
   },
 
   /**
@@ -71,13 +77,14 @@ Page({
   nextPage() { // 加载 "下一页"
     if (this.data.currentPage < this.data.total) {
       this.data.currentPage += 1
-      this.getMyOrders()
+      this.getMessageList()
     }
   },
   async getMessageList() { // 获取 "订单列表"
     const data = {
       currentPage: this.data.currentPage,
-      pageSize: this.data.pageSize
+      pageSize: this.data.pageSize,
+      msgType: 2
     }
     const result = await app.postData('/Messages/getMessage', data)
     if (result) {
@@ -96,6 +103,12 @@ Page({
     }
   },
   gotoDetail(e) { // 查看消息详情
-
+    const { id, themeid, orderid, msgtype } = e.currentTarget.dataset
+    const pageId = msgtype == 1 ? orderid : themeid
+    // 标记消息为已读
+    app.postData('/Messages/setRead', { id })
+    wx.navigateTo({
+      url: `${this.data.typePageMap[msgtype]}?id=${pageId}`,
+    })
   }
 })

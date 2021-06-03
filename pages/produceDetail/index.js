@@ -14,10 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.themeDetail = app.globalData.themeDetail
-    this.setData({
-      themeDetail: app.globalData.themeDetail
-    })
+    this.getThemeDetail(options.id)
   },
 
   /**
@@ -72,5 +69,13 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.themeDetail.phone,
     })
+  },
+  async getThemeDetail(id) {
+    const result = await app.postData('/Themes/getThemeDetail', { id })
+    if (result) {
+      this.setData({
+        themeDetail: result.data
+      })
+    }
   }
 })

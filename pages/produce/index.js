@@ -128,15 +128,13 @@ Page({
     this.getThemes()
   },
   gotoDetailPage(e) {
-    app.globalData.themeDetail = e.currentTarget.dataset.theme
     wx.navigateTo({
-      url: `../produceDetail/index`,
+      url: `../produceDetail/index?id=${e.currentTarget.dataset.theme.id}`,
     })
   },
   gotoOrderPage(e) { // 跳转到预约页面
-    app.globalData.themeDetail = e.currentTarget.dataset.theme
     wx.navigateTo({
-      url: `../newOrder/index`
+      url: `../newOrder/index?id=${e.currentTarget.dataset.theme.id}`
     })
   }
 })

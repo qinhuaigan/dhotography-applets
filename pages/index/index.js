@@ -163,9 +163,8 @@ Page({
     })
   },
   gotoDetailPage(e) {
-    app.globalData.themeDetail = e.currentTarget.dataset.theme
     wx.navigateTo({
-      url: `../produceDetail/index`,
+      url: `../produceDetail/index?id=${e.currentTarget.dataset.theme.id}`,
     })
   }
 })

@@ -36,7 +36,7 @@
         <view>电话</view>
       </view>
     </view>
-    <navigator url="../newOrder/index">
+    <navigator url="../newOrder/index?id={{themeDetail.id}}">
       <view class="bottomMenuRightBtn">立即预约</view>
     </navigator>
   </view>

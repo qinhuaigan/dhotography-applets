@@ -4,7 +4,7 @@
     <wux-row gutter="10">
       <wux-col span="4">
         <view class="imgBox"
-          style="background-image: url({{orderInfo.themeInfo.files[0] ? orderInfo.themeInfo.files[0].path : ''}})">
+          style="background-image: url('{{orderInfo.themeInfo.files[0] ? orderInfo.themeInfo.files[0].path : ''}}')">
         </view>
       </wux-col>
       <wux-col span="8">

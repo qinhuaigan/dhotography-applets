@@ -34,7 +34,7 @@
     <view class="dividerWrap">
       <wux-divider show-text="{{ false }}" />
     </view>
-    <view>
+    <!-- <view>
       <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
         <view class="themeList clearfix" style="width: {{themeData.length * 320}}rpx">
           <view class="themeCar" wx:for="{{themeData}}" wx:key="path" data-theme="{{item}}" bindtap="gotoDetailPage">
@@ -44,6 +44,12 @@
           </view>
         </view>
       </scroll-view>
+    </view> -->
+    <view class="themeList clearfix">
+      <view class="themeCar w100 mb20px" wx:for="{{themeData}}" wx:key="path" data-theme="{{item}}" bindtap="gotoDetailPage">
+        <view class="carImg" style="height: 400rpx; background-image: url('{{baseURL}}{{item.files[0] ? item.files[0].path : ''}}')">
+        </view>
+      </view>
     </view>
   </view>
   <view class="contentBox">

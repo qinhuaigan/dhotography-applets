@@ -55,7 +55,9 @@
       <view class="menuList">
         <navigator url="../message/index">
           <view class="menuItem borderBottom clearfix">
-            <view class="fl">最新消息</view>
+            <wux-badge count="{{unreadMsgNum}}">
+              <view class="fl mr10px">最新消息</view>
+            </wux-badge>
             <view class="fr">
               <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
             </view>

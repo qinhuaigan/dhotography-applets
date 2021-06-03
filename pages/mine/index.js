@@ -11,7 +11,8 @@ Page({
       isCancel: 0, // 已取消
       isAppointment: 0, // 预约中
       isHand: 0, // 进行中
-      isCompleted: 0 // 已完成
+      isCompleted: 0, // 已完成
+      unreadMsgNum: 0 // 未读消息数量
     }
   },
 
@@ -23,6 +24,7 @@ Page({
       userInfo: app.globalData.userInfo
     })
     this.getOrderCount()
+    this.getUnreadMsgNum()
   },
 
   /**
@@ -88,6 +90,14 @@ Page({
     if (result) {
       this.setData({
         orderCount: result.data
+      })
+    }
+  },
+  async getUnreadMsgNum() { // 获取 "最新消息--未读消息" 数量
+    const result = await app.postData('/Messages/getUnreadMsgNum', { msgType: 2 })
+    if (result) {
+      this.setData({
+        unreadMsgNum: result.data.total
       })
     }
   }
