@@ -73,12 +73,14 @@
             </view>
           </view>
         </navigator>
-        <view class="menuItem clearfix">
-          <view class="fl">我的表单</view>
+        <navigator url="../userInfo/index">
+          <view class="menuItem clearfix">
+          <view class="fl">我的信息</view>
           <view class="fr">
             <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
           </view>
         </view>
+        </navigator>
       </view>
     </view>
   </view>
