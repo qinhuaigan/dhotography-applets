@@ -72,11 +72,11 @@ Page({
 
   },
   bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail)
     const userInfo = this.data.userInfo
-    userInfo.provincialArea = e.detail.
+    userInfo.provincialArea = e.detail.value
+    userInfo.provincialAreaCode = e.detail.code
     this.setData({
-      region: e.detail.value
+      userInfo
     })
   },
   uploadAvatar(e) { // 上传头像
@@ -124,5 +124,36 @@ Page({
       },
       fail: () => {}
     })
+  },
+  async saveInfo() { // 保存 "信息"
+    const data = {
+      chineseName: this.data.userInfo.chineseName,
+      gender: this.data.userInfo.gender,
+      provincialArea: this.data.userInfo.provincialArea,
+      provincialAreaCode: this.data.userInfo.provincialAreaCode,
+      address: this.data.userInfo.address
+    }
+    const result = await app.postData('/UserInformations/updateUserInfoByToken', data)
+    if (result) {
+      $wuxToptips().success({
+        hidden: false,
+        text: '保存成功',
+        duration: 3000,
+        success() {},
+      })
+      app.globalData.userInfo = JSON.parse(JSON.stringify(this.data.userInfo))
+    }
+  },
+  updateName(e) { // 更新 "用户昵称"
+    const { value } = e.detail
+    this.data.userInfo.chineseName = value
+  },
+  updateAddress(e) { // 更新 "详细地址"
+    const { value } = e.detail
+    this.data.userInfo.address = value
+  },
+  updateGender(e) { // 更新 "性别"
+    const { value } = e.detail
+    this.data.userInfo.gender = value
   }
 })

@@ -14,7 +14,7 @@
         <view class="menuItem borderBottom clearfix">
           <view class="fl w25 label">我的昵称：</view>
           <view class="fl w75">
-            <input class="myInput" value="{{userInfo.chineseName}}" type="text" placeholder="请输入昵称" />
+            <input class="myInput" bindblur="updateName" value="{{userInfo.chineseName}}" type="text" placeholder="请输入昵称" />
           </view>
         </view>
         <view class="menuItem borderBottom clearfix">
@@ -24,10 +24,10 @@
         <view class="menuItem borderBottom clearfix">
           <view class="fl w25 label">我的性别：</view>
           <view class="fl w75">
-            <radio-group>
-              <radio value="0" checked="{{userInfo.gender}}" class="mr10px">男</radio>
-              <radio value="1" checked="{{userInfo.gender}}" class="mr10px">女</radio>
-              <radio value="2" checked="{{userInfo.gender}}">保密</radio>
+            <radio-group bindchange="updateGender">
+              <radio value="0" checked="{{userInfo.gender == 0}}" class="mr10px">男</radio>
+              <radio value="1" checked="{{userInfo.gender == 1}}" class="mr10px">女</radio>
+              <radio value="2" checked="{{userInfo.gender == 2}}">保密</radio>
             </radio-group>
           </view>
         </view>
@@ -43,12 +43,12 @@
         <view class="menuItem borderBottom clearfix">
           <view class="fl w25 label">详细地址：</view>
           <view class="fl w75">
-            <input class="myInput" type="text" placeholder="请输入详细地址" />
+            <input class="myInput" bindblur="updateAddress" value="{{userInfo.address}}" type="text" placeholder="请输入详细地址" />
           </view>
         </view>
         <view class="menuItem borderBottom clearfix">
           <view class="fl w25 label">我的身份：</view>
-          <view class="fl w75">普通用户</view>
+          <view class="fl w75">{{userInfo.identity}}</view>
         </view>
         <view class="menuItem clearfix">
           <view class="fl w25 label">我的邮箱：</view>
@@ -58,6 +58,6 @@
     </view>
   </view>
   <view class="mt40px">
-    <wux-button block type="assertive" bindtap="loginOut">保存</wux-button>
+    <wux-button block type="balanced" bindtap="saveInfo">保存</wux-button>
   </view>
 </view>
