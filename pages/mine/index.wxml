@@ -1,7 +1,7 @@
 <!--pages/mine/index.wxml-->
 <view class="pageHead">
   <view class="avatar">
-    <wux-icon type="ios-person"></wux-icon>
+    <wux-image mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" />
   </view>
   <navigator wx:if="{{!userInfo}}" open-type="reLaunch" url="../login/login">
     <view class="userName">请点击登录</view>

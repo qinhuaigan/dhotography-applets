@@ -17,8 +17,8 @@ page {
 
 .avatar {
   display: inline-block;
-  width: 120rpx;
-  height: 120rpx;
+  width: 160rpx;
+  height: 160rpx;
   margin: auto;
   margin-top: 40rpx;
   background-color: #eaeaea;
@@ -26,8 +26,7 @@ page {
   border: 2px solid rgba(245, 180, 62, 0.5);
   color: #fff;
   box-sizing: border-box;
-  padding-top: 20rpx;
-
+  overflow: hidden;
 }
 
 .content {
