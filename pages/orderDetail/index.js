@@ -107,8 +107,9 @@ Page({
       })
       return
     }
-    wx.navigateTo({
-      url: `../mapPage/mapPage?lat=${this.data.orderInfo.themeInfo.latitude}&lng=${this.data.orderInfo.themeInfo.longitude}`,
-    })
+    app.openLocation(this.data.orderInfo.themeInfo.longitude, this.data.orderInfo.themeInfo.latitude)
+    // wx.navigateTo({
+    //   url: `../mapPage/mapPage?lat=${this.data.orderInfo.themeInfo.latitude}&lng=${this.data.orderInfo.themeInfo.longitude}`,
+    // })
   }
 })

@@ -87,8 +87,8 @@
   <view class="mt10px">
     <view class="box">
       <view class="menuList">
-        <navigator url="../mapPage/mapPage?lng=109.422046&lat=24.281037">
-          <view class="menuItem clearfix">
+        <!-- <navigator url="../mapPage/mapPage?lng=109.422046&lat=24.281037"> -->
+          <view class="menuItem clearfix" bindtap="openMap">
           <view class="fl">
             <wux-icon color="#d7d7d7" size="16" type="ios-pin"></wux-icon>
             <text class="ml5px">广西省柳州市城中区</text>
@@ -97,7 +97,7 @@
             <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
           </view>
         </view>
-        </navigator>
+        <!-- </navigator> -->
         <view class="menuItem clearfix">
           <view class="fl">
             <wux-icon color="#d7d7d7" size="16" type="ios-call"></wux-icon>

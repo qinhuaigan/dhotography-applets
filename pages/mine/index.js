@@ -40,15 +40,16 @@ Page({
     this.setData({
       userInfo
     })
+    this.getOrderCount()
+    this.getUnreadMsgNum()
+    this.getSubscribeMsgNum()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.getOrderCount()
-    this.getUnreadMsgNum()
-    this.getSubscribeMsgNum()
+    
   },
 
   /**
@@ -111,5 +112,8 @@ Page({
         subscribeMsgNum: result.data.total
       })
     }
+  },
+  openMap() { // 打开地图导航
+    app.openLocation(109.422046, 24.281037)
   }
 })

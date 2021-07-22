@@ -118,5 +118,49 @@ App({
         }
       })
     })
+  },
+  openLocation(lng, lat) {
+    const that = this
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          // 用户未授权，请求用户授权
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+              // 用户已经同意小程序获取地理位置
+              wx.getLocation({
+                altitude: 'altitude',
+                success: function (res) {
+                  const position = {
+                    longitude: lng - 0.0065,
+                    latitude: lat - 0.0060
+                  }
+                  wx.openLocation(position)
+                },
+                fail: function (err) {
+                  console.log('获取地理位置失败 err', err)
+                }
+              })
+            }
+          })
+        } else {
+          // 用户已授权 "地理位置"
+          wx.getLocation({
+            altitude: 'altitude',
+            success: function (res) {
+              const position = {
+                longitude: lng - 0.0065,
+                latitude: lat - 0.0060
+              }
+              wx.openLocation(position)
+            },
+            fail: function (err) {
+              console.log('获取地理位置失败 err', err)
+            }
+          })
+        }
+      }
+    })
   }
 })

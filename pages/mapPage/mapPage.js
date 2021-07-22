@@ -18,7 +18,6 @@ Page({
       lng: options.lng
     }
     const that = this
-    console.log('options ===', options)
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userLocation']) {
