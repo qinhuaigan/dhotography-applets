@@ -1,4 +1,7 @@
 // pages/orderDetail/index.js
+import {
+  $wuxToptips
+} from '../../components/wux-weapp/index'
 const app = getApp()
 Page({
 
@@ -92,6 +95,20 @@ Page({
   call() { // 联系我们（打电话）
     wx.makePhoneCall({
       phoneNumber: this.data.orderInfo.themeInfo.phone,
+    })
+  },
+  goMapPage() { // 查看位置
+    if (!this.data.orderInfo.themeInfo || !this.data.orderInfo.themeInfo.latitude) {
+      $wuxToptips().warn({
+        hidden: false,
+        text: '暂无位置信息',
+        duration: 3000,
+        success() {},
+      })
+      return
+    }
+    wx.navigateTo({
+      url: `../mapPage/mapPage?lat=${this.data.orderInfo.themeInfo.latitude}&lng=${this.data.orderInfo.themeInfo.longitude}`,
     })
   }
 })
