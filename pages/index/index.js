@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    titleIcon: `${app.globalData.baseURL}/Containers/themeIcon/download/05.png`,
     scienceImgs: [],
     themeData: [],
     baseURL: app.globalData.baseURL,
@@ -19,19 +20,19 @@ Page({
     tabsData: [{
       label: '街拍',
       value: 1,
-      path: '../../assets/imgs/01.png'
+      path: `${app.globalData.baseURL}/Containers/themeIcon/download/AFEIDBAEGAAg2YXv0wUolsjw1AIwbDhsQGc.png`
     }, {
       label: '写真',
       value: 2,
-      path: '../../assets/imgs/02.png'
+      path: `${app.globalData.baseURL}/Containers/themeIcon/download/AFEIDBAEGAAg24Xv0wUooa6o0AcwbDhsQGc.png`
     }, {
       label: '棚拍',
       value: 3,
-      path: '../../assets/imgs/03.png'
+      path: `${app.globalData.baseURL}/Containers/themeIcon/download/AFEIDBAEGAAg2YXv0wUolsjw1AIwbDhsQGc.png`
     }, {
       label: '婚庆',
       value: 4,
-      path: '../../assets/imgs/04.png'
+      path: `${app.globalData.baseURL}/Containers/themeIcon/download/AFEIDBAEGAAg3oXv0wUo5IrS6QcwbDhsQGc.png`
     }]
   },
   //事件处理函数

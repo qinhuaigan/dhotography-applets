@@ -12,7 +12,7 @@
   </view>
   <view class="contentBox">
     <view class="boxTitle">
-      <view class="titleImg" style="background-image: url(../../assets/imgs/05.png)"></view>
+      <view class="titleImg" style="background-image: url('{{titleIcon}}')"></view>
       <view class="titleText">服务内容</view>
     </view>
     <view class="tabList">
