@@ -28,7 +28,7 @@
         placeholder-class="input-placeholder" type="password" />
     </view>
     <view class="mt20px">
-      <wux-button block type="balanced" bindtap="login">立即登录</wux-button>
+      <wux-button block type="energized" bindtap="login">立即登录</wux-button>
     </view>
     <view class="clearfix">
       <view class="fl">

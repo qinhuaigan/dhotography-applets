@@ -59,7 +59,6 @@ Page({
       searchStatus: status,
       defaultCurrent: status
     })
-    this.getMyOrders()
   },
 
   /**
@@ -73,7 +72,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.data.currentPage = 1
+    this.data.orderList = []
+    this.getMyOrders()
   },
 
   /**
@@ -192,6 +193,15 @@ Page({
     } = e.currentTarget.dataset
     wx.navigateTo({
       url: `../orderDetail/index?id=${id}`,
+    })
+  },
+  comment(e) { // 前往评论页面
+    const {
+      id,
+      type
+    } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `../evaluatePage/index?id=${id}&type=${type}`,
     })
   }
 })

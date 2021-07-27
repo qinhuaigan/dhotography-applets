@@ -30,8 +30,10 @@
         </wux-col>
       </wux-row>
     </view>
-    <view wx:if="{{item.status == 0}}" class="btnBox text-right">
-      <view class="cancelBtn" data-id="{{item.id}}" catchtap="cancelOrder">取消预约</view>
+    <view wx:if="{{item.status == 0 || item.status == 2}}" class="btnBox text-right">
+      <view wx:if="{{item.status == 0}}" class="cancelBtn" data-id="{{item.id}}" catchtap="cancelOrder">取消预约</view>
+      <view wx:if="{{!item.hasEvaluate && item.status == 2}}" class="cancelBtn" data-type="1" data-id="{{item.id}}" catchtap="comment">评价</view>
+      <view wx:if="{{item.hasEvaluate == 1}}" class="cancelBtn" data-type="2" data-id="{{item.id}}" catchtap="comment">追评</view>
     </view>
   </view>
   <wux-divider wx:if="{{currentPage >= total && orderList.length > 0}}">
