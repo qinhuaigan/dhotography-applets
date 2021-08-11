@@ -31,7 +31,7 @@ Page({
    */
   onShow: function () {
     const userInfo = JSON.parse(JSON.stringify(app.globalData.userInfo))
-    userInfo.avatar = `${app.globalData.baseURL}${userInfo.avatar}`
+    userInfo.avatar = userInfo.avatar ? `${app.globalData.baseURL}${userInfo.avatar}` : app.globalData.defaultAvatar
     this.setData({
       userInfo
     })
@@ -83,6 +83,7 @@ Page({
     wx.chooseImage({
       count: 1,
       success: (e) => {
+        console.log('e ===', e)
         if (e.tempFilePaths && e.tempFilePaths.length > 0) {
           wx.uploadFile({
             filePath: e.tempFilePaths[0],
@@ -97,8 +98,9 @@ Page({
                   duration: 3000,
                   success() {},
                 })
-                this.data.userInfo.avatar = `${app.globalData.baseURL}${result.data.path}` 
-                app.globalData.userInfo.avatar = result.data.path
+                const avatarPath = JSON.parse(JSON.stringify(result.data.path))
+                this.data.userInfo.avatar = `${app.globalData.baseURL}${avatarPath}` 
+                app.globalData.userInfo.avatar = JSON.parse(JSON.stringify(result.data.path))
                 this.setData({
                   userInfo: this.data.userInfo
                 })

@@ -2,8 +2,8 @@
 <!-- 消息提示 -->
 <wux-toptips id="wux-toptips" />
 <view class="pageHead">
-  <view class="avatar">
-    <wux-image bindtap="uploadAvatar" mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" />
+  <view class="avatar" bindtap="uploadAvatar" style="background-image: url('{{userInfo.avatar}}')">
+    <!-- <wux-image bindtap="uploadAvatar" mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" /> -->
   </view>
   <view class="userName">点击更换头像</view>
 </view>

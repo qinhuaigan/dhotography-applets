@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -36,9 +36,10 @@ Page({
    */
   onShow: function () {
     const userInfo = JSON.parse(JSON.stringify(app.globalData.userInfo))
-    userInfo.avatar = `${app.globalData.baseURL}${userInfo.avatar}`
+    userInfo.avatar = userInfo.avatar ? `${app.globalData.baseURL}${userInfo.avatar}` : app.globalData.defaultAvatar
     this.setData({
-      userInfo
+      userInfo,
+      // defaultAvatar: app.globalData.defaultAvatar
     })
     this.getOrderCount()
     this.getUnreadMsgNum()
@@ -49,7 +50,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**

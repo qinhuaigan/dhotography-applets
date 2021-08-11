@@ -40,7 +40,8 @@ App({
     baseURL: 'http://localhost:3000/api',
     token: null,
     firstLoad: true,
-    themeDetail: null
+    themeDetail: null,
+    defaultAvatar: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png' // 默认头像
   },
   showLoading() {
     wx.showToast({

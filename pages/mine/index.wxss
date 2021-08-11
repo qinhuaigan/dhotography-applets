@@ -23,10 +23,12 @@ page {
   margin-top: 40rpx;
   background-color: #eaeaea;
   border-radius: 50%;
-  border: 2px solid rgba(245, 180, 62, 0.5);
+  /* border: 2px solid rgba(245, 180, 62, 0.5); */
   color: #fff;
   box-sizing: border-box;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
 .content {
