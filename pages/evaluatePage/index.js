@@ -188,5 +188,11 @@ Page({
         disabledBtn: false
       })
     }
+  },
+  publichChange(e) { // 是否公开
+    this.data.evaluateInfo.isPublic = e.detail.value.length > 0
+    this.setData({
+      evaluateInfo: this.data.evaluateInfo
+    })
   }
 })

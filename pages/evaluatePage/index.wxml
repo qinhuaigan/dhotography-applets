@@ -28,7 +28,8 @@
       </wux-row>
     </view>
     <view class="mt10px">
-      <wux-textarea rows="{{6}}" maxlength="-1" data-str="remark" bindblur="levelChange" placeholder="从多角度评价服务，可以帮助更多有需要的人" />
+      <wux-textarea rows="{{6}}" maxlength="-1" data-str="remark" bindblur="levelChange"
+        placeholder="从多角度评价服务，可以帮助更多有需要的人" />
     </view>
     <view class="">
       <wux-row gutter="15">
@@ -49,23 +50,29 @@
       </wux-row>
     </view>
     <view class="mt10px">
-      <checkbox value="{{true}}" checked="{{evaluateInfo.isPublic}}">
-        <text>公开</text>
-        <text style="color: #ccc;">（公开头像昵称信息）</text>
-      </checkbox>
+      <checkbox-group data-str="isPublic" bindchange="publichChange">
+        <checkbox value="{{true}}" checked="{{evaluateInfo.isPublic}}">
+          <text>公开</text>
+          <text style="color: #ccc;">（公开头像昵称信息）</text>
+        </checkbox>
+      </checkbox-group>
     </view>
   </view>
   <view class="contentBox">
     <view style="color: #ccc;">服务评分</view>
     <wux-cell title="描述相符" hover-class="none">
-      <wux-rater slot="footer" max="5" data-str="accordLevel" bindchange="levelChange" defaultValue="{{ evaluateInfo.accordLevel }}" />
+      <wux-rater slot="footer" max="5" data-str="accordLevel" bindchange="levelChange"
+        defaultValue="{{ evaluateInfo.accordLevel }}" />
     </wux-cell>
     <wux-cell title="拍摄质量" hover-class="none">
-      <wux-rater slot="footer" max="5" data-str="qualityLevel" bindchange="levelChange" defaultValue="{{ evaluateInfo.serviceLevel }}" />
+      <wux-rater slot="footer" max="5" data-str="qualityLevel" bindchange="levelChange"
+        defaultValue="{{ evaluateInfo.serviceLevel }}" />
     </wux-cell>
     <wux-cell title="服务态度" hover-class="none">
-      <wux-rater slot="footer" max="5" data-str="attitudeLevel" bindchange="levelChange" defaultValue="{{ evaluateInfo.serviceLevel }}" />
+      <wux-rater slot="footer" max="5" data-str="attitudeLevel" bindchange="levelChange"
+        defaultValue="{{ evaluateInfo.serviceLevel }}" />
     </wux-cell>
   </view>
-  <wux-button block class="mt20px" disabled="{{disabledBtn}}" bindtap="submitEvaluate" type="energized" class="w100">立即发布</wux-button>
+  <wux-button block class="mt20px" disabled="{{disabledBtn}}" bindtap="submitEvaluate" type="energized" class="w100">
+    立即发布</wux-button>
 </view>

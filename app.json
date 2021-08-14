@@ -13,7 +13,8 @@
     "pages/subscribeMsg/index",
     "pages/userInfo/index",
     "pages/mapPage/mapPage",
-    "pages/evaluatePage/index"
+    "pages/evaluatePage/index",
+    "pages/evaluateList/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

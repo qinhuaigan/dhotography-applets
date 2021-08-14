@@ -1,4 +1,4 @@
-// pages/produceDetail/index.js
+// pages/evaluateList/index.js
 const app = getApp()
 Page({
 
@@ -7,19 +7,22 @@ Page({
    */
   data: {
     baseURL: app.globalData.baseURL,
-    themeDetail: null,
     currentPage: 1,
-    pageSize: 2,
+    pageSize: 5,
     evaluateList: [], // 评论列表
     evaluateStatistics: null,
-    totalEvaluete: 0
+    totalEvaluete: 0,
+    totalPage: 0,
+    themeId: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getThemeDetail(options.id)
+    this.data.evaluateList = []
+    this.data.currentPage = 1
+    this.data.themeId = options.id
     this.getEvaluates(options.id)
     this.getEvaluateStatistics(options.id)
   },
@@ -63,7 +66,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.nextPage()
   },
 
   /**
@@ -71,19 +74,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  call() { // 打电话
-    wx.makePhoneCall({
-      phoneNumber: this.data.themeDetail.phone,
-    })
-  },
-  async getThemeDetail(id) {
-    const result = await app.postData('/Themes/getThemeDetail', { id })
-    if (result) {
-      this.setData({
-        themeDetail: result.data
-      })
-    }
   },
   async getEvaluates(themeId) { // 获取评论
     const result = await app.postData('/Evaluates/getEvaluateByThemeId', {
@@ -100,8 +90,9 @@ Page({
         })
       })
       this.setData({
-        evaluateList,
-        totalEvaluete: result.total
+        evaluateList: [...this.data.evaluateList, ...evaluateList],
+        totalEvaluete: result.total,
+        totalPage: result.totalPage
       })
     }
   },
@@ -124,5 +115,14 @@ Page({
       }, []),
       current
     })
+  },
+  nextPage() { // 下一页
+    if (this.data.currentPage < this.data.totalPage) {
+      this.data.currentPage += 1
+      this.setData({
+        currentPage: this.data.currentPage
+      })
+      this.getEvaluates(this.data.themeId)
+    }
   }
 })
