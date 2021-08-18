@@ -37,7 +37,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'http://101.200.137.140/api',
     token: null,
     firstLoad: true,
     themeDetail: null,
@@ -141,6 +141,12 @@ App({
                 },
                 fail: function (err) {
                   console.log('获取地理位置失败 err', err)
+                  $wuxToptips().error({
+                    hidden: false,
+                    text: '定位失败，请检查是否打开GPS',
+                    duration: 3000,
+                    success() {},
+                  })
                 }
               })
             }
@@ -158,6 +164,12 @@ App({
             },
             fail: function (err) {
               console.log('获取地理位置失败 err', err)
+              $wuxToptips().error({
+                hidden: false,
+                text: '定位失败，请检查是否打开GPS',
+                duration: 3000,
+                success() {},
+              })
             }
           })
         }

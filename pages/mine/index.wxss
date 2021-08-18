@@ -33,7 +33,7 @@ page {
 
 .content {
   padding: 0 50rpx;
-  margin-top: -80rpx;
+  margin-top: -60rpx;
   z-index: 1000;
   position: relative;
   min-height: 500rpx;
