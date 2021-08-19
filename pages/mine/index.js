@@ -116,5 +116,11 @@ Page({
   },
   openMap() { // 打开地图导航
     app.openLocation(109.422046, 24.281037)
-  }
+  },
+  call(e) { // 打电话
+    const { phone } = e.currentTarget.dataset
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
+  },
 })

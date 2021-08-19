@@ -98,13 +98,13 @@
           </view>
         </view>
         <!-- </navigator> -->
-        <view class="menuItem clearfix">
+        <view class="menuItem clearfix" data-phone="1300000000" bindtap="call">
           <view class="fl">
             <wux-icon color="#d7d7d7" size="16" type="ios-call"></wux-icon>
             <text class="ml5px">1300000000</text>
           </view>
           <view class="fr">
-            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+            <!-- <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon> -->
           </view>
         </view>
         <view class="menuItem clearfix">
@@ -116,7 +116,7 @@
         <view class="menuItem clearfix">
           <view class="fl">
             <wux-icon color="#d7d7d7" size="16" type="ios-home"></wux-icon>
-            <text class="ml5px">欢迎来店拍摄</text>
+            <text class="ml5px">欢迎来到星缘摄影工作室</text>
           </view>
         </view>
       </view>
