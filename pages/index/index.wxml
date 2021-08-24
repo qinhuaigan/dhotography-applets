@@ -28,7 +28,7 @@
   <view class="contentBox">
     <view class="boxTitle">
       <wux-divider>
-        <view class="boxTitleText">本期推荐</view>
+        <view class="boxTitleText">今日推荐</view>
       </wux-divider>
     </view>
     <view class="dividerWrap">

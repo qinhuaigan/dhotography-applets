@@ -29,7 +29,7 @@
         </wux-col>
       </wux-row>
       <wux-divider showText="{{ false }}"></wux-divider>
-    <view class="fz14px">订阅时间：{{item.orderInfo.createTime}}</view>
+    <view class="fz14px">下单时间：{{item.orderInfo.createTime}}</view>
     </view>
   </view>
   <wux-divider wx:if="{{currentPage >= total && messageList.length > 0}}">
