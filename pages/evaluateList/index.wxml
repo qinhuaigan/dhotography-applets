@@ -71,5 +71,5 @@
       <view class="empty" wx:if="{{evaluateList.length === 0}}">暂无用户评价</view>
     </view>
   </view>
-  <wux-divider wx:if="{{ currentPage >= totalPage }}" text="到底了" />
+  <wux-divider wx:if="{{ currentPage >= totalPage }}" color="#e8e8e8" text="到底了" />
 </view>
