@@ -16,6 +16,7 @@
     "pages/evaluatePage/index",
     "pages/evaluateList/index"
   ],
+  "entryPagePath": "pages/index/index",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

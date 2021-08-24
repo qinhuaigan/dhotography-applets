@@ -130,9 +130,13 @@ App({
             scope: 'scope.userLocation',
             success() {
               // 用户已经同意小程序获取地理位置
+              wx.showLoading({
+                title: '请稍候...',
+              })
               wx.getLocation({
                 altitude: 'altitude',
                 success: function (res) {
+                  wx.hideLoading()
                   const position = {
                     longitude: lng - 0.0065,
                     latitude: lat - 0.0060
@@ -140,6 +144,7 @@ App({
                   wx.openLocation(position)
                 },
                 fail: function (err) {
+                  wx.hideLoading()
                   console.log('获取地理位置失败 err', err)
                   $wuxToptips().error({
                     hidden: false,
@@ -153,9 +158,13 @@ App({
           })
         } else {
           // 用户已授权 "地理位置"
+          wx.showLoading({
+            title: '请稍候...',
+          })
           wx.getLocation({
             altitude: 'altitude',
             success: function (res) {
+              wx.hideLoading()
               const position = {
                 longitude: lng - 0.0065,
                 latitude: lat - 0.0060
@@ -163,6 +172,7 @@ App({
               wx.openLocation(position)
             },
             fail: function (err) {
+              wx.hideLoading()
               console.log('获取地理位置失败 err', err)
               $wuxToptips().error({
                 hidden: false,
