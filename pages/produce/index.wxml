@@ -10,7 +10,7 @@
     <view class="carTitle">{{item.title}}</view>
     <view class="carDescription">{{item.description}}</view>
     <view class="carFooter clearfix">
-      <view class="carMoney fl">{{item.totalMoney}}</view>
+      <view class="carMoney fl">￥{{item.totalMoney}}</view>
       <view class="carFooterDes fl">已预约：{{item.num || 0}} 剩余：{{item.total - (item.num || 0)}}</view>
       <view class="fr" data-theme="{{item}}" catchtap="gotoOrderPage">
         <view class="carBtn">立即预约</view>

@@ -13,7 +13,7 @@
     <view class="carTitle">{{themeDetail.title}}</view>
     <view class="carDescription">{{themeDetail.description}}</view>
     <view class="carFooter clearfix">
-      <view class="carMoney fl">{{themeDetail.totalMoney}}</view>
+      <view class="carMoney fl">￥{{themeDetail.totalMoney}}</view>
       <view class="carFooterDes fl">已预约：{{themeDetail.num || 0}} 剩余：{{themeDetail.total - (themeDetail.num || 0)}}
       </view>
     </view>

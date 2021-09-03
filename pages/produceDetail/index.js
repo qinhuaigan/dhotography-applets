@@ -80,6 +80,7 @@ Page({
   async getThemeDetail(id) {
     const result = await app.postData('/Themes/getThemeDetail', { id })
     if (result) {
+      result.data.totalMoney = `${result.data.price.toFixed(2)}`
       this.setData({
         themeDetail: result.data
       })
