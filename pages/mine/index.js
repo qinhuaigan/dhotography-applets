@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    defaultAvatar: null,
     userInfo: null,
     orderCount: {
       isCancel: 0, // 已取消
@@ -21,7 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -35,11 +36,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const userInfo = JSON.parse(JSON.stringify(app.globalData.userInfo))
-    userInfo.avatar = userInfo.avatar ? `${app.globalData.baseURL}${userInfo.avatar}` : app.globalData.defaultAvatar
+    const userInfo = app.globalData.userInfo ? JSON.parse(JSON.stringify(app.globalData.userInfo)) : null
+    if (userInfo) {
+      userInfo.avatar = userInfo && userInfo.avatar ? `${app.globalData.baseURL}${userInfo.avatar}` : app.globalData.defaultAvatar
+    }
     this.setData({
       userInfo,
-      // defaultAvatar: app.globalData.defaultAvatar
+      defaultAvatar: app.globalData.defaultAvatar
     })
     this.getOrderCount()
     this.getUnreadMsgNum()
@@ -99,7 +102,9 @@ Page({
     }
   },
   async getUnreadMsgNum() { // 获取 "最新消息--未读消息" 数量
-    const result = await app.postData('/Messages/getUnreadMsgNum', { msgType: 2 })
+    const result = await app.postData('/Messages/getUnreadMsgNum', {
+      msgType: 2
+    })
     if (result) {
       this.setData({
         unreadMsgNum: result.data.total
@@ -107,7 +112,9 @@ Page({
     }
   },
   async getSubscribeMsgNum() { // 获取 "我的订阅--未读消息" 数量
-    const result = await app.postData('/Messages/getUnreadMsgNum', { msgType: 1 })
+    const result = await app.postData('/Messages/getUnreadMsgNum', {
+      msgType: 1
+    })
     if (result) {
       this.setData({
         subscribeMsgNum: result.data.total
@@ -118,7 +125,9 @@ Page({
     app.openLocation(109.422046, 24.281037)
   },
   call(e) { // 打电话
-    const { phone } = e.currentTarget.dataset
+    const {
+      phone
+    } = e.currentTarget.dataset
     wx.makePhoneCall({
       phoneNumber: phone,
     })

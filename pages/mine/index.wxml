@@ -1,8 +1,8 @@
 <!--pages/mine/index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
 <view class="pageHead">
-  <view class="avatar" style="background-image: url('{{userInfo.avatar}}')">
-    <!-- <wux-image mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" /> -->
-  </view>
+  <view class="avatar" style="background-image: url('{{userInfo && userInfo.avatar ? userInfo.avatar : defaultAvatar}}')"></view>
   <navigator wx:if="{{!userInfo}}" open-type="reLaunch" url="../login/login">
     <view class="userName">请点击登录</view>
   </navigator>

@@ -37,7 +37,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    baseURL: 'http://101.200.137.140:8812/api',
+    baseURL: 'http://101.200.137.140/api',
     token: null,
     firstLoad: true,
     themeDetail: null,
